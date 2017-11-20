@@ -6,7 +6,7 @@ export default (props) => {
 		<div className="container-fluid">
 			<div className="jumbotron jumbotron-fluid">
 				<div className="container">
-					<h1 className="d-flex justify-content-center" >Give me a damn dollar!</h1>
+					<h1 className="d-flex justify-content-center" >Just give a dollar:</h1>
 				</div>
 			</div>
 			<FlipCard/>
