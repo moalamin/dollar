@@ -32,8 +32,7 @@ export default class Flipcard extends Component {
 				<div
 					key="back"
 					className="d-flex justify-content-center"
-					style={{ width: '100%' }}
-					onClick={this.handleClick.bind(this)}>
+					style={{ width: '100%' }}>
 					<div
 						className="dollar-form"
 						style={{
