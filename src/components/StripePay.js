@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    CardElement,
+  CardElement,
   CardNumberElement,
   CardExpiryElement,
   CardCVCElement,
@@ -8,7 +8,7 @@ import {
   PaymentRequestButtonElement,
   StripeProvider,
   Elements,
-  injectStripe,
+  injectStripe
 } from 'react-stripe-elements';
 
 const handleBlur = () => {
@@ -27,7 +27,7 @@ const handleReady = () => {
   console.log('[ready]');
 };
 
-const createOptions = (fontSize) => {
+const createOptions = fontSize => {
   return {
     style: {
       base: {
@@ -36,13 +36,13 @@ const createOptions = (fontSize) => {
         letterSpacing: '0.025em',
         fontFamily: 'Source Code Pro, Menlo, monospace',
         '::placeholder': {
-          color: '#aab7c4',
-        },
+          color: '#aab7c4'
+        }
       },
       invalid: {
-        color: '#9e2146',
-      },
-    },
+        color: '#9e2146'
+      }
+    }
   };
 };
 
@@ -53,52 +53,60 @@ class _SplitForm extends React.Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="col-md-6">
-          <div className="form-group">
+      <form  onSubmit={this.handleSubmit}>
+        <div className="form-row">
+          <div className="form-group col-sm-6">
             <label>
               Card number
-              <CardNumberElement
-                onBlur={handleBlur}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onReady={handleReady}
-                {...createOptions(this.props.fontSize)}
-              />
             </label>
+            <CardNumberElement
+              onBlur={handleBlur}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onReady={handleReady}
+              {...createOptions(this.props.fontSize)}
+            />
+          </div>
+          <div className="form-group col-sm-6">
+            <label>
+              Expiration date
+            </label>
+            <CardExpiryElement
+              onBlur={handleBlur}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onReady={handleReady}
+              {...createOptions(this.props.fontSize)}
+            />
           </div>
         </div>
-        <label>
-          Expiration date
-          <CardExpiryElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <label>
-          CVC
-          <CardCVCElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <label>
-          Postal code
-          <PostalCodeElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <button>Pay</button>
+        <div className="form-row">
+          <div className="form-group col">
+            <label>
+              CVC
+            </label>
+            <CardCVCElement
+              onBlur={handleBlur}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onReady={handleReady}
+              {...createOptions(this.props.fontSize)}
+            />
+          </div>
+          <div className="form-group col">
+            <label>
+              Postal code
+            </label>
+            <PostalCodeElement
+              onBlur={handleBlur}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onReady={handleReady}
+              {...createOptions(this.props.fontSize)}
+            />
+          </div>
+        </div>
+        <button className="btn btn-primary">Waste it</button>
       </form>
     );
   }
@@ -109,30 +117,25 @@ class Checkout extends React.Component {
   constructor() {
     super();
     this.state = {
-      elementFontSize: window.innerWidth < 450 ? '14px' : '18px',
+      elementFontSize: window.innerWidth < 450 ? '14px' : '18px'
     };
     window.addEventListener('resize', () => {
       if (window.innerWidth < 450 && this.state.elementFontSize !== '14px') {
-        this.setState({elementFontSize: '14px'});
-      } else if (
-        window.innerWidth >= 450 &&
-        this.state.elementFontSize !== '18px'
-      ) {
-        this.setState({elementFontSize: '18px'});
+        this.setState({ elementFontSize: '14px' });
+      } else if (window.innerWidth >= 450 && this.state.elementFontSize !== '18px') {
+        this.setState({ elementFontSize: '18px' });
       }
     });
   }
 
   render() {
-    const {elementFontSize} = this.state;
+    const { elementFontSize } = this.state;
     return (
       <div className="container">
-        <div className="checkout-wrapper">
-          <h2 class="text-center">Go Ahead and Waste a Dollar</h2>
-          <Elements>
-            <SplitForm fontSize={elementFontSize} />
-          </Elements>
-        </div>
+        <h2 className="text-center">Go ahead and waste a dollar</h2>
+        <Elements>
+          <SplitForm fontSize={elementFontSize} />
+        </Elements>
       </div>
     );
   }

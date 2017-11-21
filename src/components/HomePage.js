@@ -19,7 +19,7 @@ export default props => {
 			<div className="row d-block d-sm-none">
 				<div className="col-md-12">
 					<div className="dollar-bill" style={{ width: '100%' }}>
-						<h1>Show only on small</h1>
+						<h1 className="display-3">Show only on small</h1>
 					</div>
 				</div>
 			</div>
