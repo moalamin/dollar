@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import dollarJPG from '../dollar.jpg';
+import Checkout from './StripePay';
+import { StripeProvider } from 'react-stripe-elements';
 
 export default class Flipcard extends Component {
 	constructor(props) {
@@ -16,7 +18,7 @@ export default class Flipcard extends Component {
 	}
 
 	handleSubmit(e) {
-		e.stopPropagation()
+		e.preventDefault();
 	}
 
 	render() {
@@ -29,67 +31,17 @@ export default class Flipcard extends Component {
 					onClick={this.handleClick.bind(this)}>
 					<img className="img-fluid" src={dollarJPG} alt="Dollar Bill" />
 				</div>
-				<div
-					key="back"
-					className="d-flex justify-content-center"
-					style={{ width: '100%' }}
-					onClick={this.handleClick.bind(this)}>
+				<div key="back" className="d-flex justify-content-center" style={{ width: '100%' }}>
 					<div
-						className="dollar-form"
+						className="dollar-form d-flex align-items-center"
 						style={{
 							width: '1200px',
 							height: '512px',
 							display: 'block'
 						}}>
-						<form>
-							<div className="container">
-								<div className="row">
-									<div className="col-md-6">
-										<div className="form-group">
-											<label htmlFor="inputEmail4">Email</label>
-											<input
-												type="email"
-												className="form-control"
-												id="inputEmail4"
-												placeholder="Email"
-											/>
-										</div>
-										<div className="form-group">
-											<label htmlFor="inputPassword4">Password</label>
-											<input
-												type="password"
-												className="form-control"
-												id="inputPassword4"
-												placeholder="Password"
-											/>
-										</div>
-									</div>
-									<div className="col-md-6">
-										<div className="form-group">
-											<label htmlFor="inputEmail4">Email</label>
-											<input
-												type="email"
-												className="form-control"
-												id="inputEmail4"
-												placeholder="Email"
-											/>
-										</div>
-										<div className="form-group">
-											<label htmlFor="inputPassword4">Password</label>
-											<input
-												type="password"
-												className="form-control"
-												id="inputPassword4"
-												placeholder="Password"
-											/>
-										</div>
-									</div>
-									<button onClick={this.handleSubmit.bind(this)} type="submit" className="btn btn-primary">
-										Sign in
-									</button>
-								</div>
-							</div>
-						</form>
+						<StripeProvider apiKey="pk_test_3YFRSG3lL4x6XYABP4tsMop3">
+							<Checkout />
+						</StripeProvider>
 					</div>
 				</div>
 			</ReactCardFlip>

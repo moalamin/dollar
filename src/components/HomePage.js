@@ -6,7 +6,7 @@ export default props => {
 		<div className="container">
 			<div className="row d-flex justify-content-center">
 				<h1 className="display-1" style={{ textAlign: 'center' }}>
-					Give a Dollar
+					Waste a Dollar
 				</h1>
 			</div>
 			<div className="row d-none d-sm-block">
