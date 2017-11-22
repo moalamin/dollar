@@ -54,8 +54,8 @@ class _SplitForm extends React.Component {
   render() {
     return (
       <form  onSubmit={this.handleSubmit}>
-        <div className="form-row">
-          <div className="form-group col-sm-6">
+        <div className="form-row d-flex justify-content-center">
+          <div className="form-group col-sm-3">
             <label>
               Card number
             </label>
@@ -67,7 +67,7 @@ class _SplitForm extends React.Component {
               {...createOptions(this.props.fontSize)}
             />
           </div>
-          <div className="form-group col-sm-6">
+          <div className="form-group col-sm-3">
             <label>
               Expiration date
             </label>
@@ -80,8 +80,8 @@ class _SplitForm extends React.Component {
             />
           </div>
         </div>
-        <div className="form-row">
-          <div className="form-group col">
+        <div className="form-row d-flex justify-content-center">
+          <div className="form-group col-sm-3">
             <label>
               CVC
             </label>
@@ -93,7 +93,7 @@ class _SplitForm extends React.Component {
               {...createOptions(this.props.fontSize)}
             />
           </div>
-          <div className="form-group col">
+          <div className="form-group col-sm-3">
             <label>
               Postal code
             </label>
@@ -106,7 +106,11 @@ class _SplitForm extends React.Component {
             />
           </div>
         </div>
-        <button className="btn btn-primary">Waste it</button>
+        <div className="form-row d-flex justify-content-center">
+          <div className="col-sm-3">
+            <button className="btn btn-primary form-control">Waste it</button>
+          </div>
+        </div>
       </form>
     );
   }
