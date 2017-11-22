@@ -49,13 +49,13 @@ const createOptions = fontSize => {
 class _SplitForm extends React.Component {
   handleSubmit = ev => {
     ev.preventDefault();
-    this.props.stripe.createToken().then(payload => console.log(payload));
+    //this.props.stripe.createToken().then(payload => console.log(payload));
   };
   render() {
     return (
       <form  onSubmit={this.handleSubmit}>
         <div className="form-row d-flex justify-content-center">
-          <div className="form-group col-sm-3">
+          <div className="form-group col-sm-5">
             <label>
               Card number
             </label>
@@ -67,7 +67,7 @@ class _SplitForm extends React.Component {
               {...createOptions(this.props.fontSize)}
             />
           </div>
-          <div className="form-group col-sm-3">
+          <div className="form-group col-sm-5">
             <label>
               Expiration date
             </label>
@@ -81,7 +81,7 @@ class _SplitForm extends React.Component {
           </div>
         </div>
         <div className="form-row d-flex justify-content-center">
-          <div className="form-group col-sm-3">
+          <div className="form-group col-sm-5">
             <label>
               CVC
             </label>
@@ -93,7 +93,7 @@ class _SplitForm extends React.Component {
               {...createOptions(this.props.fontSize)}
             />
           </div>
-          <div className="form-group col-sm-3">
+          <div className="form-group col-sm-5">
             <label>
               Postal code
             </label>
@@ -107,8 +107,8 @@ class _SplitForm extends React.Component {
           </div>
         </div>
         <div className="form-row d-flex justify-content-center">
-          <div className="col-sm-3">
-            <button className="btn btn-primary form-control">Waste it</button>
+          <div className="col-sm-4">
+            <button className="btn btn-success form-control">Waste it</button>
           </div>
         </div>
       </form>
@@ -136,10 +136,11 @@ class Checkout extends React.Component {
     const { elementFontSize } = this.state;
     return (
       <div className="container">
-        <h2 className="text-center">Go ahead and waste a dollar</h2>
-        <Elements>
-          <SplitForm fontSize={elementFontSize} />
-        </Elements>
+        <div className="col-sm-8 offset-2 form-background">
+          <Elements>
+            <SplitForm fontSize={elementFontSize} />
+          </Elements>
+        </div>
       </div>
     );
   }

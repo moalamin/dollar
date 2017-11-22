@@ -27,7 +27,7 @@ h1, h1, h3, h4, h5, h6 {
 .dollar-form {
     background-color: #A0FF87;
     position: relative;
-    border: thin groove rgba(0,0,0,.4);
+    border: 1px groove rgba(0,0,0,.4);
 }
 
 .dollar-form:before, .dollar-form:after
@@ -62,3 +62,8 @@ h1, h1, h3, h4, h5, h6 {
   left: auto;
 }
 
+.form-background {
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px groove rgba(0,0,0,.4);
+}

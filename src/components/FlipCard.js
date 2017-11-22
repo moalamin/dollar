@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import dollarJPG from '../dollar.jpg';
-import Checkout from './StripePay';
-import { StripeProvider } from 'react-stripe-elements';
+import Checkout from './StripePay'
+import {
+  StripeProvider,
+} from 'react-stripe-elements';
+
 
 export default class Flipcard extends Component {
 	constructor(props) {
@@ -31,7 +34,10 @@ export default class Flipcard extends Component {
 					onClick={this.handleClick.bind(this)}>
 					<img className="img-fluid" src={dollarJPG} alt="Dollar Bill" />
 				</div>
-				<div key="back" className="d-flex justify-content-center" style={{ width: '100%' }}>
+				<div
+					key="back"
+					className="d-flex justify-content-center"
+					style={{ width: '100%' }}>
 					<div
 						className="dollar-form d-flex align-items-center"
 						style={{
@@ -40,7 +46,7 @@ export default class Flipcard extends Component {
 							display: 'block'
 						}}>
 						<StripeProvider apiKey="pk_test_3YFRSG3lL4x6XYABP4tsMop3">
-							<Checkout />
+							<Checkout/>
 						</StripeProvider>
 					</div>
 				</div>
