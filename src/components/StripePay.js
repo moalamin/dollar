@@ -29,20 +29,20 @@ const handleReady = () => {
 
 const createOptions = fontSize => {
   return {
-    style: {
-      base: {
-        fontSize,
-        color: '#424770',
-        letterSpacing: '0.025em',
-        fontFamily: 'Source Code Pro, Menlo, monospace',
-        '::placeholder': {
-          color: '#aab7c4'
-        }
-      },
-      invalid: {
-        color: '#9e2146'
-      }
-    }
+    // style: {
+    //   base: {
+    //     fontSize,
+    //     color: '#424770',
+    //     letterSpacing: '0.025em',
+    //     fontFamily: 'Source Code Pro, Menlo, monospace',
+    //     '::placeholder': {
+    //       color: '#aab7c4'
+    //     }
+    //   },
+    //   invalid: {
+    //     color: '#9e2146'
+    //   }
+    // }
   };
 };
 
@@ -107,9 +107,7 @@ class _SplitForm extends React.Component {
           </div>
         </div>
         <div className="form-row d-flex justify-content-center">
-          <div className="col-sm-4">
-            <button className="btn btn-success form-control">Waste it</button>
-          </div>
+          <button className="btn btn-primary">Waste it</button>
         </div>
       </form>
     );
