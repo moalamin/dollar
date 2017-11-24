@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {
   CardElement,
   CardNumberElement,
@@ -49,7 +50,14 @@ const createOptions = fontSize => {
 class _SplitForm extends React.Component {
   handleSubmit = ev => {
     ev.preventDefault();
-    this.props.stripe.createToken().then(payload => console.log(payload));
+    this.props.stripe.createToken().then( payload => {
+      console.log(payload)
+      axios.post('http://localhost:3500/api/charge', {
+        'stripeToken': payload.token.id
+      }).then(response => {
+        console.log(response)
+      }).catch( err => console.log(err) )
+    });
   };
   render() {
     return (
