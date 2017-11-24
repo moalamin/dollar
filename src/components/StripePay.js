@@ -52,7 +52,7 @@ class _SplitForm extends React.Component {
     ev.preventDefault();
     this.props.stripe.createToken().then( payload => {
       console.log(payload)
-      axios.post('http://localhost:3500/api/charge', {
+      axios.post(process.env.REACT_APP_ENDPOINT + '/api/charge', {
         'stripeToken': payload.token.id
       }).then(response => {
         console.log(response)

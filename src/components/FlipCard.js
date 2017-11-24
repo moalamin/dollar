@@ -45,7 +45,7 @@ export default class Flipcard extends Component {
 							height: '512px',
 							display: 'block'
 						}}>
-						<StripeProvider apiKey="pk_test_3YFRSG3lL4x6XYABP4tsMop3">
+						<StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
 							<Checkout/>
 						</StripeProvider>
 					</div>
