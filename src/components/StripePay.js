@@ -48,30 +48,29 @@ const createOptions = fontSize => {
 };
 
 class _SplitForm extends React.Component {
-  constructor (props) {
-    super(props)
-    console.log(props)
+  constructor(props) {
+    super(props);
   }
   handleSubmit = ev => {
     ev.preventDefault();
     this.props.handleLoading(true);
-    this.props.stripe.createToken().then( payload => {
-      console.log(payload)
-      axios.post(process.env.REACT_APP_ENDPOINT + '/api/charge', {
-        'stripeToken': payload.token.id
-      }).then(response => {
-        console.log(response)
-      }).catch( err => console.log(err) )
+    this.props.stripe.createToken().then(payload => {
+      axios
+        .post(process.env.REACT_APP_ENDPOINT + '/api/charge', {
+          stripeToken: payload.token.id
+        })
+        .then(response => {
+          this.props.handleLoading(false);
+        })
+        .catch(err => console.log(err));
     });
   };
   render() {
     return (
-      <form  onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <div className="form-row d-flex justify-content-center">
           <div className="form-group col-sm-5">
-            <label>
-              Card number
-            </label>
+            <label>Card number</label>
             <CardNumberElement
               onBlur={handleBlur}
               onChange={handleChange}
@@ -81,9 +80,7 @@ class _SplitForm extends React.Component {
             />
           </div>
           <div className="form-group col-sm-5">
-            <label>
-              Expiration date
-            </label>
+            <label>Expiration date</label>
             <CardExpiryElement
               onBlur={handleBlur}
               onChange={handleChange}
@@ -95,9 +92,7 @@ class _SplitForm extends React.Component {
         </div>
         <div className="form-row d-flex justify-content-center">
           <div className="form-group col-sm-5">
-            <label>
-              CVC
-            </label>
+            <label>CVC</label>
             <CardCVCElement
               onBlur={handleBlur}
               onChange={handleChange}
@@ -107,9 +102,7 @@ class _SplitForm extends React.Component {
             />
           </div>
           <div className="form-group col-sm-5">
-            <label>
-              Postal code
-            </label>
+            <label>Postal code</label>
             <PostalCodeElement
               onBlur={handleBlur}
               onChange={handleChange}
@@ -149,7 +142,11 @@ class Checkout extends React.Component {
       <div className="container">
         <div className="col-sm-8 offset-2 form-background">
           <Elements>
-            <SplitForm isLoading={this.props.isLoading} handleLoading={this.props.handleLoading} fontSize={elementFontSize} />
+            <SplitForm
+              isLoading={this.props.isLoading}
+              handleLoading={this.props.handleLoading}
+              fontSize={elementFontSize}
+            />
           </Elements>
         </div>
       </div>

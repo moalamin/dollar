@@ -5,22 +5,35 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false
+            isLoading: false,
+            isComplete: false
         };
         this.handleLoading = this.handleLoading.bind(this);
+        this.handleComplete = this.handleComplete.bind(this);
     }
-    handleLoading(choice){
+    handleLoading(choice) {
         if (choice === true) {
-            this.setState({isLoading: true});
+            this.setState({ isLoading: true });
         } else {
-            this.setState({isLoading: false});
+            this.setState({ isLoading: false });
         }
     }
-	render () {
-		return (
-			<HomePage isLoading={this.state.isLoading} handleLoading={this.handleLoading} />
-		);
-	}
+    handleComplete(choice) {
+        if (choice === true) {
+            this.setState({ isComplete: true });
+        } else {
+            this.setState({ isComplete: false });
+        }
+    }
+    render() {
+        return (
+            <HomePage
+                isLoading={this.state.isLoading}
+                handleComplete={this.handleComplete}
+                handleLoading={this.handleLoading}
+            />
+        );
+    }
 }
 
 export default App;
