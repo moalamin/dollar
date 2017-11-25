@@ -12,7 +12,11 @@ export default props => {
 			<div className="row d-none d-sm-block">
 				<div className="col-md-12">
 					<div className="dollar-bill" style={{ width: '100%' }}>
-						<FlipCard isLoading={props.isLoading} handleLoading={props.handleLoading} />
+						<FlipCard 
+							isLoading={props.isLoading}
+							isComplete={props.isComplete}
+							handleLoading={props.handleLoading}
+							handleComplete={props.handleComplete} />
 					</div>
 				</div>
 			</div>

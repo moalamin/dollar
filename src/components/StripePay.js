@@ -61,6 +61,7 @@ class _SplitForm extends React.Component {
         })
         .then(response => {
           this.props.handleLoading(false);
+          this.props.handleComplete(true);
         })
         .catch(err => console.log(err));
     });
@@ -119,39 +120,4 @@ class _SplitForm extends React.Component {
     );
   }
 }
-const SplitForm = injectStripe(_SplitForm);
-
-class Checkout extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      elementFontSize: window.innerWidth < 450 ? '14px' : '18px'
-    };
-    window.addEventListener('resize', () => {
-      if (window.innerWidth < 450 && this.state.elementFontSize !== '14px') {
-        this.setState({ elementFontSize: '14px' });
-      } else if (window.innerWidth >= 450 && this.state.elementFontSize !== '18px') {
-        this.setState({ elementFontSize: '18px' });
-      }
-    });
-  }
-
-  render() {
-    const { elementFontSize } = this.state;
-    return (
-      <div className="container">
-        <div className="col-sm-8 offset-2 form-background">
-          <Elements>
-            <SplitForm
-              isLoading={this.props.isLoading}
-              handleLoading={this.props.handleLoading}
-              fontSize={elementFontSize}
-            />
-          </Elements>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default Checkout;
+export default injectStripe(_SplitForm);

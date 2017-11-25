@@ -29,6 +29,7 @@ class App extends Component {
         return (
             <HomePage
                 isLoading={this.state.isLoading}
+                isComplete={this.state.isComplete}
                 handleComplete={this.handleComplete}
                 handleLoading={this.handleLoading}
             />
