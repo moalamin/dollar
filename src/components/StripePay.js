@@ -48,8 +48,13 @@ const createOptions = fontSize => {
 };
 
 class _SplitForm extends React.Component {
+  constructor (props) {
+    super(props)
+    console.log(props)
+  }
   handleSubmit = ev => {
     ev.preventDefault();
+    this.props.handleLoading(true);
     this.props.stripe.createToken().then( payload => {
       console.log(payload)
       axios.post(process.env.REACT_APP_ENDPOINT + '/api/charge', {
@@ -144,7 +149,7 @@ class Checkout extends React.Component {
       <div className="container">
         <div className="col-sm-8 offset-2 form-background">
           <Elements>
-            <SplitForm fontSize={elementFontSize} />
+            <SplitForm isLoading={this.props.isLoading} handleLoading={this.props.handleLoading} fontSize={elementFontSize} />
           </Elements>
         </div>
       </div>

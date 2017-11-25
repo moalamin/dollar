@@ -5,6 +5,7 @@ import Checkout from './StripePay'
 import {
   StripeProvider,
 } from 'react-stripe-elements';
+import ReactLoading from 'react-loading';
 
 
 export default class Flipcard extends Component {
@@ -45,9 +46,16 @@ export default class Flipcard extends Component {
 							height: '512px',
 							display: 'block'
 						}}>
-						<StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
-							<Checkout/>
-						</StripeProvider>
+						{
+							this.props.isLoading === false ? 
+								<StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
+									<Checkout isLoading={this.props.isLoading} handleLoading={this.props.handleLoading}/>
+								</StripeProvider> 
+								:
+								<div className="container d-flex justify-content-center">
+									<ReactLoading type="bars" color="#444" />
+								</div>
+						}
 					</div>
 				</div>
 			</ReactCardFlip>
