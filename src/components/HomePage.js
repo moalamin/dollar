@@ -27,6 +27,13 @@ export default props => {
 					</div>
 				</div>
 			</div>
+			<div className="row d-flex justify-content-center">
+				<div className="col-12 d-flex justify-content-center">
+					<h1>
+						Total dollars wasted: #
+					</h1>
+				</div>
+			</div>
 		</div>
 	);
 };
