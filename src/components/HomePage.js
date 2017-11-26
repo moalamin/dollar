@@ -1,9 +1,18 @@
 import React from 'react';
 import FlipCard from './FlipCard';
+import axios from 'axios';
 
 export default class HomePage extends React.Component {
 	constructor(props) {
-		super(props)
+		super(props);
+		this.state = {
+			count: null
+		};
+	}
+	componentWillMount() {
+		axios.get(process.env.REACT_APP_ENDPOINT + '/api/dollar_count').then(payload => {
+			this.setState({ count: payload.data.count });
+		});
 	}
 	render() {
 		return (
@@ -16,11 +25,12 @@ export default class HomePage extends React.Component {
 				<div className="row d-none d-sm-block">
 					<div className="col-md-12">
 						<div className="dollar-bill" style={{ width: '100%' }}>
-							<FlipCard 
+							<FlipCard
 								isLoading={this.props.isLoading}
 								isComplete={this.props.isComplete}
 								handleLoading={this.props.handleLoading}
-								handleComplete={this.props.handleComplete} />
+								handleComplete={this.props.handleComplete}
+							/>
 						</div>
 					</div>
 				</div>
@@ -31,14 +41,14 @@ export default class HomePage extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div className="row d-flex justify-content-center">
-					<div className="col-12 d-flex justify-content-center">
-						<h1>
-							Total dollars wasted: #
-						</h1>
+				{this.state.count === null ? null : (
+					<div className="row d-flex justify-content-center">
+						<div className="col-12 d-flex justify-content-center">
+							<h1>Dollars wasted: ${this.state.count}</h1>
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		);
 	}
-};
+}
