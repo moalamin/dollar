@@ -69,3 +69,7 @@ h1, h1, h3, h4, h5, h6 {
     border: 1px groove rgba(0,0,0,.4);
 
 }
+
+.react-card-front {
+    position: relative !important;
+}

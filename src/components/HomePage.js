@@ -12,7 +12,11 @@ export default props => {
 			<div className="row d-none d-sm-block">
 				<div className="col-md-12">
 					<div className="dollar-bill" style={{ width: '100%' }}>
-						<FlipCard />
+						<FlipCard 
+							isLoading={props.isLoading}
+							isComplete={props.isComplete}
+							handleLoading={props.handleLoading}
+							handleComplete={props.handleComplete} />
 					</div>
 				</div>
 			</div>
@@ -21,6 +25,13 @@ export default props => {
 					<div className="dollar-bill" style={{ width: '100%' }}>
 						<h1 className="display-3">Show only on small</h1>
 					</div>
+				</div>
+			</div>
+			<div className="row d-flex justify-content-center">
+				<div className="col-12 d-flex justify-content-center">
+					<h1>
+						Total dollars wasted: #
+					</h1>
 				</div>
 			</div>
 		</div>
