@@ -35,6 +35,7 @@
     "globals": {
         "React": true,
         "props": true,
-        "state": true
+        "state": true,
+        "process": true
     }
 }

@@ -1,13 +1,11 @@
 import React from 'react';
 import FlipCard from './FlipCard';
 import axios from 'axios';
+import DollarCount from './DollarCount';
 
 export default class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			count: null
-		};
 	}
 	componentWillMount() {
 		axios.get(process.env.REACT_APP_ENDPOINT + '/api/dollar_count').then(payload => {
@@ -41,13 +39,7 @@ export default class HomePage extends React.Component {
 						</div>
 					</div>
 				</div>
-				{this.state.count === null ? null : (
-					<div className="row d-flex justify-content-center">
-						<div className="col-12 d-flex justify-content-center">
-							<h1>Dollars wasted: ${this.state.count}</h1>
-						</div>
-					</div>
-				)}
+				<DollarCount/>
 			</div>
 		);
 	}
