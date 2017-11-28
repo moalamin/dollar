@@ -24,8 +24,7 @@ export default class HomePage extends React.Component {
 					<div className="col-md-12">
 						<div className="dollar-bill" style={{ width: '100%' }}>
 							<FlipCard
-								isLoading={this.props.isLoading}
-								isComplete={this.props.isComplete}
+								appState={this.props.appState}
 								handleLoading={this.props.handleLoading}
 								handleComplete={this.props.handleComplete}
 							/>

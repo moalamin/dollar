@@ -42,31 +42,28 @@ export default class Flipcard extends Component {
 							height: '512px',
 							display: 'block'
 						}}>
-
-						{	
-							this.props.isComplete ?
+						{this.props.appState.isComplete ? (
+							<div className="container d-flex justify-content-center">
+								<h1 className="display1">Great, you wasted a dollar.</h1>
+							</div>
+						) : (
+							<div>
+								<div className={this.props.appState.isLoading === true ? 'd-none' : 'd-block'}>
+									<StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
+										<Checkout
+											appState={this.props.appState}
+											handleLoading={this.props.handleLoading}
+											handleComplete={this.props.handleComplete}
+										/>
+									</StripeProvider>
+								</div>
+								<div className={this.props.appState.isLoading === true ? 'd-block' : 'd-none'}>
 									<div className="container d-flex justify-content-center">
-										<h1 className="display1">Great, you wasted a dollar.</h1>
+										<ReactLoading type="bars" color="#444" />
 									</div>
-								:
-									<div>
-										<div className={this.props.isLoading === true ? 'd-none' : 'd-block'}>
-											<StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
-												<Checkout
-													isLoading={this.props.isLoading}
-													isComplete={this.props.isComplete}
-													handleLoading={this.props.handleLoading}
-													handleComplete={this.props.handleComplete}
-												/>
-											</StripeProvider>
-										</div>
-										<div className={this.props.isLoading === true ? 'd-block' : 'd-none'}>
-											<div className="container d-flex justify-content-center">
-												<ReactLoading type="bars" color="#444" />
-											</div>
-										</div>
-									</div>
-						}
+								</div>
+							</div>
+						)}
 					</div>
 				</div>
 			</ReactCardFlip>
