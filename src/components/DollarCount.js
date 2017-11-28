@@ -7,7 +7,6 @@ export default class DollarCount extends React.Component {
 		this.state = {
 			count: null
 		};
-		this.setSate = this.setState.bind(this);
 	}
 
 	componentWillMount() {
