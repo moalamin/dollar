@@ -32,9 +32,6 @@ export default class HomePage extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div className="col-md-12">
-					
-				</div>
 				<div className="row d-block d-sm-none">
 					<div className="col-md-12">
 						<div className="dollar-bill" style={{ width: '100%' }}>
@@ -42,6 +39,17 @@ export default class HomePage extends React.Component {
 						</div>
 					</div>
 				</div>
+				{
+					this.props.appState.errors ? 
+						<div className="row">
+							<div className="col-md-12 text-center">
+								<p className="text-danger">Something is wrong wrong with your payment method, check your payment info and try again.</p>
+							</div>
+						</div>
+
+					:
+						null
+				}
 				<DollarCount/>
 			</div>
 		);
