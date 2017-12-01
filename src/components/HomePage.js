@@ -27,9 +27,13 @@ export default class HomePage extends React.Component {
 								appState={this.props.appState}
 								handleLoading={this.props.handleLoading}
 								handleComplete={this.props.handleComplete}
+								handleError={this.props.handleError}
 							/>
 						</div>
 					</div>
+				</div>
+				<div className="col-md-12">
+					
 				</div>
 				<div className="row d-block d-sm-none">
 					<div className="col-md-12">

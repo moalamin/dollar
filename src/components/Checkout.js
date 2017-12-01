@@ -37,6 +37,7 @@ class Checkout extends React.Component {
 							appState={this.props.appState}
 							handleLoading={this.props.handleLoading}
 							handleComplete={this.props.handleComplete}
+							handleError={this.props.handleError}
 							fontSize={elementFontSize}
 						/>
 					</Elements>

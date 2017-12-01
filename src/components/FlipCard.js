@@ -54,6 +54,7 @@ export default class Flipcard extends Component {
 											appState={this.props.appState}
 											handleLoading={this.props.handleLoading}
 											handleComplete={this.props.handleComplete}
+											handleError={this.props.handleError}
 										/>
 									</StripeProvider>
 								</div>

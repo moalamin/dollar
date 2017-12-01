@@ -51,7 +51,9 @@ class _SplitForm extends React.Component {
 				.catch(err => console.log(err));
 		}).catch(err => {
 			console.dir(err)
-			this.props.handleLoading(false)
+			this.props.handleLoading(false);
+			this.props.handleError(true);
+			console.log(this.props.errors);
 		});
 	};
 

@@ -6,10 +6,12 @@ class App extends Component {
 		super(props);
 		this.state = {
 			isLoading: false,
-			isComplete: false
+			isComplete: false,
+			errors: false
 		};
 		this.handleLoading = this.handleLoading.bind(this);
 		this.handleComplete = this.handleComplete.bind(this);
+		this.handleError = this.handleError.bind(this);
 	}
 	handleLoading(choice) {
 		if (choice === true) {
@@ -25,12 +27,20 @@ class App extends Component {
 			this.setState({ isComplete: false });
 		}
 	}
+	handleError(choice) {
+		if (choice === true) {
+			this.setState({ errors: true });
+		} else {
+			this.setState({ errors: false });
+		}
+	}
 	render() {
 		return (
 			<HomePage
 				appState={this.state}
 				handleComplete={this.handleComplete}
 				handleLoading={this.handleLoading}
+				handleError={this.handleError}
 			/>
 		);
 	}
